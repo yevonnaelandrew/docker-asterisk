@@ -25,14 +25,22 @@ RUN cd /usr/local/src/asterisk-20.4.0/ && \
     asterisk && \
     echo "Asterisk installed"
 
+RUN cd /usr/local/src && \
+    svn co http://svn.digium.com/svn/asterisk-gui/trunk asterisk-gui && \
+    cd asterisk-gui && \
+    ./configure && \
+    make && \
+    make install && \
+    make config
+
 COPY "./configs/extensions.conf" /etc/asterisk/extensions.conf
 RUN echo "extensions.conf copied"
 
 COPY "./configs/pjsip.conf" /etc/asterisk/pjsip.conf
 RUN echo "pjsip.conf copied"
 
-COPY "./configs/http.conf" /etc/asterisk/http2.conf
+COPY "./configs/http.conf" /etc/asterisk/http.conf
 RUN echo "http.conf copied"
 
-COPY "./configs/manager.conf" /etc/asterisk/manager2.conf
+COPY "./configs/manager.conf" /etc/asterisk/manager.conf
 RUN echo "manager.conf copied"
