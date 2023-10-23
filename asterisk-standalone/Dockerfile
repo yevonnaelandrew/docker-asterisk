@@ -15,7 +15,7 @@ RUN cd /usr/local/src && \
     tar -zxvf asterisk-20-current.tar.gz && \
     echo "Asterisk tarball extracted"
 
-RUN cd /usr/local/src/asterisk-20.4.0/ && \
+RUN cd /usr/local/src/asterisk-20.5.0/ && \
     ./contrib/scripts/install_prereq install && \
     ./configure && \
     make && \
